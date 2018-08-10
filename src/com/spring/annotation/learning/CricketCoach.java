@@ -1,5 +1,8 @@
 package com.spring.annotation.learning;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,11 +48,20 @@ public class CricketCoach implements Coach {
 	public CricketCoach() {
 		System.out.println(">> CricketCoach: CricketCoach()");
 	}
+
+	@PostConstruct
+	public void startUp() {
+		System.out.println(">> CricketCoach: startUp()");
+	}
 	
+	@PreDestroy
+	public void cleanUp() {
+		System.out.println(">> CricketCoach: cleanUp()");
+	}
+
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return email+" : "+team;
+		return email + " : " + team;
 	}
 
 	@Override
